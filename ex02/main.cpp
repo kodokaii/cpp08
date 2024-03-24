@@ -6,7 +6,7 @@
 /*   By: nlaerema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:09:25 by nlaerema          #+#    #+#             */
-/*   Updated: 2024/03/24 15:18:00 by nlaerema         ###   ########.fr       */
+/*   Updated: 2024/03/24 15:43:23 by nlaerema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,66 +16,76 @@
 
 void	mStack(void)
 {
-	MutantStack<int> mstack;
+	MutantStack<int>			mstack;
+	MutantStack<int>::iterator	it;
 	
 	mstack.push(5);
 	mstack.push(17);
 
-	std::cout << mstack.top() << std::endl;
+	std::cout << "top: " << mstack.top() << std::endl;
 
 	mstack.pop();
 
-	std::cout << mstack.size() << std::endl;
+	std::cout << "size: " << mstack.size() << std::endl;
 
 	mstack.push(3);
 	mstack.push(5);
 	mstack.push(737);
 	mstack.push(42);
-	mstack.push(21);
 	mstack.push(0);
 
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
 
+	it = mstack.begin();
 	++it;
 	--it;
-	while (it != ite)
+	while (it != mstack.end())
 	{
 		std::cout << *it << std::endl;
-		++it;
+		it++;
+	}
+	std::cout << std::endl;
+	while (it != mstack.begin())
+	{
+		it--;
+		std::cout << *it << std::endl;
 	}
 	std::stack<int> s(mstack);
 }
 
 void	mList(void)
 {
-	std::list<int> mlist;
+	std::list<int>				mlist;
+	std::list<int>::iterator	it;
 	
 	mlist.push_back(5);
 	mlist.push_back(17);
 
-	std::cout << mlist.back() << std::endl;
+	std::cout << "top: " << mlist.back() << std::endl;
 
 	mlist.pop_back();
 
-	std::cout << mlist.size() << std::endl;
+	std::cout << "size: " << mlist.size() << std::endl;
 
 	mlist.push_back(3);
 	mlist.push_back(5);
 	mlist.push_back(737);
 	mlist.push_back(42);
-	mlist.push_back(21);
 	mlist.push_back(0);
 
-	std::list<int>::iterator it = mlist.begin();
-	std::list<int>::iterator ite = mlist.end();
 
+	it = mlist.begin();
 	++it;
 	--it;
-	while (it != ite)
+	while (it != mlist.end())
 	{
 		std::cout << *it << std::endl;
-		++it;
+		it++;
+	}
+	std::cout << std::endl;
+	while (it != mlist.begin())
+	{
+		it--;
+		std::cout << *it << std::endl;
 	}
 	std::list<int> s(mlist);
 }
